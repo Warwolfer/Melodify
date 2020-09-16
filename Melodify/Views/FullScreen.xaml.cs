@@ -192,6 +192,8 @@ namespace Melodify
 
         private void CMExit_Click(object sender, RoutedEventArgs e)
         {
+            Properties.Settings.Default.mainLeft = Left;
+            Properties.Settings.Default.mainTop = Top;
             timer.Stop();
             this.Close();
             _window.FullNow(false);

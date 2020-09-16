@@ -1,4 +1,4 @@
-﻿using SpotifyAPI.Web;
+using SpotifyAPI.Web;
 using SpotifyAPI.Web.Models;
 using System;
 using System.Diagnostics;
@@ -39,9 +39,9 @@ namespace Melodify
                 Properties.Settings.Default.firstLaunch = false;
             } else
             {
-                ;
-                //Left = Properties.Settings.Default.mainLeft;
-                //Top = Properties.Settings.Default.mainTop;
+                
+                Left = Properties.Settings.Default.mainLeft;
+                Top = Properties.Settings.Default.mainTop;
             }
 
             // Initalize some instances to ensure continuing playback
