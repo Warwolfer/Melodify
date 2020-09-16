@@ -19,14 +19,19 @@
         MouseDoubleClick="Window_MouseDoubleClick"
         >
 
+    
     <Grid x:Name="MainGrid" MouseEnter="MainGrid_MouseEnter" MouseLeave="MainGrid_MouseLeave" MouseWheel="Mouse_Wheel" AllowDrop="True">
-
-        <Label Name="Title" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,20" FontSize="20"  Foreground="#FFC7C7C7" Panel.ZIndex="-10"></Label>
-        <Label Name="Author" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,-35" FontSize="16" Foreground="#FFA4A4A4" Panel.ZIndex="-10"></Label>
-        <Image x:Name="cover" Source="https://source.unsplash.com/random/200x400" HorizontalAlignment="Center" Height="500" VerticalAlignment="Top" Width="500" Stretch="UniformToFill" Panel.ZIndex="-99" Margin="0,-140,0,0">
-            <Image.Effect>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="91*"/>
+            <ColumnDefinition Width="89*"/>
+        </Grid.ColumnDefinitions>
+        <Label Content="Now playing" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="16,-4,16,0" FontSize="14" Foreground="#FFFFFFFF" Panel.ZIndex="-10" Grid.ColumnSpan="2"/>
+        <TextBlock Name="Title" HorizontalAlignment="Center" LineHeight="18" LineStackingStrategy="BlockLineHeight" TextAlignment="Center" TextWrapping="WrapWithOverflow"  VerticalAlignment="Top"  Margin="16,54,16,0" FontSize="18"  Foreground="#FFFFFFFF" Panel.ZIndex="-10" Grid.ColumnSpan="2" FontFamily="Lato Light" Grid.Row="4"></TextBlock>
+        <Label Name="Author" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="16,24,16,0" FontSize="16" Foreground="#FFFFFFFF" Panel.ZIndex="-10" Grid.ColumnSpan="2"></Label>
+        <Image x:Name="cover" Source="https://source.unsplash.com/random/200x400" HorizontalAlignment="Left" Height="0" VerticalAlignment="Top" Width="0" Stretch="UniformToFill" Panel.ZIndex="-99" Margin="180,-140,0,0">
+            <!--<Image.Effect>
                 <BlurEffect Radius="40"/>
-            </Image.Effect>
+            </Image.Effect> -->
         </Image>
 
         <!-- The UI buttons -->
@@ -53,7 +58,7 @@
             </Button.Background>
         </Button>
         <Button x:Name="loveClick" Style="{DynamicResource control}" Content="♡" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,2,2" Click="Love_Click" Foreground="White" BorderBrush="{x:Null}" Padding="6, 2, 6, 2" Cursor="Hand" x:FieldModifier="public"
-                ToolTipService.InitialShowDelay="500" ToolTipService.ShowDuration="2000" ToolTipService.BetweenShowDelay="10000" ToolTip="Add current songs to favorites">
+                ToolTipService.InitialShowDelay="500" ToolTipService.ShowDuration="2000" ToolTipService.BetweenShowDelay="10000" ToolTip="Add current songs to favorites" Grid.Column="1">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="3"/>
@@ -63,8 +68,8 @@
                 <SolidColorBrush Color="Black" Opacity="0.15"/>
             </Button.Background>
         </Button>
-        <Button x:Name="infoClick" Style="{DynamicResource control}" Content="∞" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="2,2,5,0" Click="Menu_Click" Foreground="White" BorderBrush="{x:Null}" Padding="5,1,5,3" Cursor="Hand"
-                ToolTipService.InitialShowDelay="500" ToolTipService.ShowDuration="2000" ToolTipService.BetweenShowDelay="10000" ToolTip="Opens a menu with more actions">
+        <Button x:Name="infoClick" Style="{DynamicResource control}" Content="∞" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,2,5,0" Click="Menu_Click" Foreground="White" BorderBrush="{x:Null}" Padding="5,1,5,3" Cursor="Hand"
+                ToolTipService.InitialShowDelay="500" ToolTipService.ShowDuration="2000" ToolTipService.BetweenShowDelay="10000" ToolTip="Opens a menu with more actions" Grid.Column="1">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="3"/>
@@ -76,21 +81,22 @@
         </Button>
 
         <!-- Media Control buttons -->
-        <Button x:Name="pauseButton" Style="{DynamicResource playback}" Content=" " HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,0" Click="PausePlay_Click" BorderBrush="{x:Null}" Padding="50,40,50,25" FontSize="18" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Width="128" Panel.ZIndex="-5"/>
+        <Button x:Name="pauseButton" Style="{DynamicResource playback}" Content=" " HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="116,0,0,0" Click="PausePlay_Click" BorderBrush="{x:Null}" Padding="50,40,50,25" FontSize="18" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Width="128" Panel.ZIndex="-5" Grid.ColumnSpan="2"/>
 
         <Button x:Name="previousButton" Style="{DynamicResource playback}" Content=" " HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="0,0,0,0" Click="Previous_Click" BorderBrush="{x:Null}" Padding="50,20,50,25" FontSize="18" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Panel.ZIndex="-5"/>
 
-        <Button x:Name="nextButton" Style="{DynamicResource playback}" Content=" " HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,0,0" Click="Next_Click" BorderBrush="{x:Null}" Padding="50,20,50,25" FontSize="18" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Panel.ZIndex="-5"/>
+        <Button x:Name="nextButton" Style="{DynamicResource playback}" Content=" " HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,0,0" Click="Next_Click" BorderBrush="{x:Null}" Padding="50,20,50,25" FontSize="18" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Panel.ZIndex="-5" Grid.Column="1"/>
 
         <!-- Progress bar -->
-        <Grid x:Name="progressGrid" Height="4" VerticalAlignment="Bottom" Width="360" MouseDown="Seek_Playback" Background="#01FFFFFF" Cursor="Hand" Visibility="Visible" MouseEnter="progressGrid_MouseEnter" MouseLeave="progressGrid_MouseLeave">
-            <Rectangle x:Name="progressBar" Height="2" VerticalAlignment="Bottom" Margin="0" Fill="#40FFFFFF" Width="0" HorizontalAlignment="Left"/>
-            <Canvas Background="Black" Opacity="0.01" Panel.ZIndex="-90"/>
-        </Grid>
+        <Grid x:Name="progressGrid"  Margin="0, 24, 0 ,0" Height="4" VerticalAlignment="Top" Width="360" MouseDown="Seek_Playback" Background="#2F92BAF4" Cursor="Hand" Visibility="Visible" MouseEnter="progressGrid_MouseEnter" MouseLeave="progressGrid_MouseLeave" Grid.ColumnSpan="2">
+            <Rectangle x:Name="progressBar" Height="3" VerticalAlignment="Top" Margin="0,1,0,0" Fill="#EE4BB5" Width="50" HorizontalAlignment="Left"/>
 
-        <Canvas Background="Black" Opacity="0.5" Panel.ZIndex="-90"/>
-        <Canvas Background="Black" Opacity="0.5" Panel.ZIndex="-999"/>
+        </Grid>
         
+        <Canvas Background="Black" Height="24" Opacity="0.4" Panel.ZIndex="-90" Grid.ColumnSpan="2" Margin="0,0,0,0" VerticalAlignment="Top"/>
+        <Canvas Background="Black" Opacity="0.5" Panel.ZIndex="-999" Margin="0,0,0,0" Grid.ColumnSpan="2"/>
+
+            
         <Grid.ContextMenu>
             <ContextMenu Name="contextMenu">
                 <MenuItem Header="Add To Playlist" Click="Populate_Playlists"/>

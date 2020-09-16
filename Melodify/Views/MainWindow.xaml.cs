@@ -1,4 +1,4 @@
-using SpotifyAPI.Web;
+﻿using SpotifyAPI.Web;
 using SpotifyAPI.Web.Models;
 using System;
 using System.Diagnostics;
@@ -46,6 +46,7 @@ namespace Melodify
 
             // Initalize some instances to ensure continuing playback
             App.Current.Properties["userPause"] = false;
+            Debug.Print(Properties.Resources.SpotID);
             spotAPI = new SpotifyAPI(Properties.Resources.SpotID, Properties.Resources.SpotSecret);
 
             // Sleep for a second while waiting for login to process
@@ -96,7 +97,7 @@ namespace Melodify
                     {
                         if (context.Item.Error == null)
                         {
-                            Title.Content = context.Item.Name;
+                            Title.Text = context.Item.Name;
                             Author.Content = context.Item.Artists[0].Name;
 
                             // Check to make sure the song changed before refreshing variables
@@ -367,13 +368,13 @@ namespace Melodify
         private void progressGrid_MouseEnter(object sender, MouseEventArgs e)
         {
             progressGrid.Height = 8;
-            progressBar.Height = 3;
+            progressBar.Height = 6;
         }
 
         private void progressGrid_MouseLeave(object sender, MouseEventArgs e)
         {
-            progressGrid.Height = 6;
-            progressBar.Height = 2;
+            progressGrid.Height = 4;
+            progressBar.Height = 3;
         }
 
         private void TaskContext_Click(object sender, RoutedEventArgs e)

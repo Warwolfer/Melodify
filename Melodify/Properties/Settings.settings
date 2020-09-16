@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="ProgressBar" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
+      <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="taskTop" Type="System.Double" Scope="User">
       <Value Profile="(Default)">0</Value>
